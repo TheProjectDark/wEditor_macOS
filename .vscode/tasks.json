@@ -7,7 +7,7 @@
             "command": "/bin/zsh",
             "args": [
                 "-c",
-                "clang++ -std=c++17 main.cpp -o wEditor $(/opt/homebrew/bin/wx-config --cxxflags --libs)"
+                "clang++ -std=c++17 main.cpp -o wEditor $(/usr/local/bin/wx-config --cxxflags --libs)"
             ],
             "group": {
                 "kind": "build",
