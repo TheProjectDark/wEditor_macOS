@@ -14,4 +14,6 @@ class MainFrame : public wxFrame
         void OnAbout(wxCommandEvent& event);
         void OnSave(wxCommandEvent& event);
         void OnOpen(wxCommandEvent& event);
+        void OnText(wxCommandEvent& event);
+        void HighlightSyntax();
 };

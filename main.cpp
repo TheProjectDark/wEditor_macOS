@@ -50,6 +50,7 @@ MainFrame::MainFrame(const wxString& title)
     save->Bind(wxEVT_BUTTON, &MainFrame::OnSave, this);
     open->Bind(wxEVT_BUTTON, &MainFrame::OnOpen, this);
     Bind(wxEVT_MENU, &MainFrame::OnAbout, this, wxID_ABOUT);
+    Bind(wxEVT_TEXT, &MainFrame::OnText, this);
 }
 
 wxIMPLEMENT_APP(App);
@@ -62,6 +63,60 @@ bool App::OnInit() {
     mainFrame->SetClientSize(mainFrame->FromDIP(wxSize(800, 600)));
     mainFrame->Show();
     return true;
+}
+
+void MainFrame::OnText(wxCommandEvent& evt)
+{
+    HighlightSyntax();
+    evt.Skip();
+}
+
+
+void MainFrame::HighlightSyntax()
+{
+    wxString text = textCtrl->GetValue();
+
+    wxTextAttr normal(*wxBLACK);
+    textCtrl->SetStyle(0, text.length(), normal);
+
+    std::vector<wxString> keywords = {
+        "return", "if", "else", "while"
+    };
+
+    for (const auto& word : keywords)
+    {
+        size_t pos = text.find(word);
+        while (pos != wxString::npos) {
+            wxTextAttr kw(wxColour(128, 0, 128));
+            textCtrl->SetStyle(pos, pos + word.length(), kw);
+            pos = text.find(word, pos + 1);
+        }
+    }
+
+    std::vector<wxString> types = {
+        "string", "char", "int", "float", "double", "bool", "void"
+    };
+    for (const auto& type : types)
+    {
+        size_t pos = text.find(type);
+        while (pos != wxString::npos) {
+            wxTextAttr typeAttr(*wxBLUE);
+            textCtrl->SetStyle(pos, pos + type.length(), typeAttr);
+            pos = text.find(type, pos + 1);
+        }   
+    }
+    std::vector<wxString> comments = {
+        "//", "/*", "*/"
+    };
+    for (const auto& comment : comments)
+    {
+        size_t pos = text.find(comment);
+        while (pos != wxString::npos) {
+            wxTextAttr commentAttr(*wxGREEN);
+            textCtrl->SetStyle(pos, pos + comment.length(), commentAttr);
+            pos = text.find(comment, pos + 1);
+        }
+    }
 }
 
 //save file function
