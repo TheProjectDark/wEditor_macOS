@@ -7,7 +7,6 @@
  * (at your option) any later version.
  */
 
-
 #include <wx/wx.h>
 #include <wx/filedlg.h>
 #include <wx/file.h>
