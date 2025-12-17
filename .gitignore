@@ -10,6 +10,7 @@ out/
 *.so
 *.dll
 *.a
+wEditor
 
 #cmake
 CMakeCache.txt
@@ -39,3 +40,5 @@ Makefile
 
 #wxWidgets build files
 *.dbg
+*.out
+*.app
