@@ -1,6 +1,6 @@
 CXX = clang++
 CXXFLAGS = -std=c++20
-SRC = main.cpp SyntaxHighlighter/SyntaxHighlightCPP.cpp SyntaxHighlighter/SyntaxHighlighter.cpp SyntaxHighlighter/SyntaxHighlightC.cpp SyntaxHighlighter/SyntaxHighlightPython.cpp Functions/DragNDrop.cpp
+SRC = main.cpp SyntaxHighlighter/SyntaxHighlightCPP.cpp SyntaxHighlighter/SyntaxHighlighter.cpp SyntaxHighlighter/SyntaxHighlightC.cpp SyntaxHighlighter/SyntaxHighlightPython.cpp SyntaxHighlighter/SyntaxHighlightAssembly.cpp Functions/DragNDrop.cpp
 TARGET = wEditor
 WX_CONFIG = /usr/local/bin/wx-config
 all: $(TARGET)

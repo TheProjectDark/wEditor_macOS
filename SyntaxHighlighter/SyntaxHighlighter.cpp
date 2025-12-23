@@ -11,6 +11,7 @@
 #include "SyntaxHighlightCPP.h"
 #include "SyntaxHighlightC.h"
 #include "SyntaxHighlightPython.h"
+#include "SyntaxHighlightAssembly.h"
 
 SyntaxHighlighter* HighlighterFactory::CreateHighlighter(const wxString& language) {
     if (language == "Text") {
@@ -25,6 +26,9 @@ SyntaxHighlighter* HighlighterFactory::CreateHighlighter(const wxString& languag
     else if (language == "Python") {
         return new SyntaxHighlightPython();    
     }
+    else if (language == "Assembly") {
+        return new SyntaxHighlightAssembly();
+    }
     return new SyntaxHighlightCPP();
 }
 
@@ -33,6 +37,7 @@ std::vector<wxString> HighlighterFactory::GetAvailableLanguages() {
         "Text",
         "C++",
         "C",
-        "Python"
+        "Python",
+        "Assembly"
     };
 }

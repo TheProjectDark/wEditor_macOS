@@ -206,6 +206,8 @@ void MainFrame::OnOpen(wxCommandEvent& event)
         languageChoice->SetStringSelection("C");
     } else if (ext == "py") {
         languageChoice->SetStringSelection("Python");
+    } else if (ext == "asm" || ext == "s") {
+        languageChoice->SetStringSelection("Assembly");
     } else {
         languageChoice->SetStringSelection("Text");
     }
