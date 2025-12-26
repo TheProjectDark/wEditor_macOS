@@ -1,3 +1,12 @@
+/*
+ * wEditor
+ * Copyright (C) 2025 TheProjectDark
+ * This program is free software: you can redistribute it and/or modify
+ * it under the terms of the GNU General Public License as published by
+ * the Free Software Foundation, either version 3 of the License, or
+ * (at your option) any later version.
+ */
+
 #include "SyntaxHighlightAssembly.h"
 
 void SyntaxHighlightAssembly::ApplyHighlight(wxTextCtrl* textCtrl)
@@ -68,5 +77,19 @@ void SyntaxHighlightAssembly::ApplyHighlight(wxTextCtrl* textCtrl)
         wxTextAttr labelAttr(wxColour(255, 153, 0));
         textCtrl->SetStyle(start, labelPos + 1, labelAttr);
         labelPos = text.find(":", labelPos + 1);
+    }
+
+    //directives
+    std::vector<wxString> directives = {
+        ".data", ".text", ".bss", ".globl", ".section", ".align", ".byte", ".word", ".long", ".quad", ".asciz"
+    };
+    for (const auto& dir : directives)
+    {
+        size_t pos = text.find(dir);
+        while (pos != wxString::npos) {
+            wxTextAttr dirAttr(wxColour(255, 102, 0));
+            textCtrl->SetStyle(pos, pos + dir.length(), dirAttr);
+            pos = text.find(dir, pos + 1);
+        }
     }
 }
