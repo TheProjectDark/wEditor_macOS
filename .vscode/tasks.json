@@ -7,7 +7,7 @@
             "command": "/bin/zsh",
             "args": [
                 "-c",
-                "clang++ -std=c++20 main.cpp SyntaxHighlighter/SyntaxHighlighter.cpp SyntaxHighlighter/SyntaxHighlightCPP.cpp SyntaxHighlighter/SyntaxHighlightC.cpp SyntaxHighlighter/SyntaxHighlightPython.cpp SyntaxHighlighter/SyntaxHighlightAssembly.cpp Functions/DragNDrop.cpp -o wEditor $(/usr/local/bin/wx-config --cxxflags --libs)"
+                "clang++ -std=c++20 main.cpp SyntaxHighlighter/SyntaxHighlighter.cpp SyntaxHighlighter/SyntaxHighlightCPP.cpp SyntaxHighlighter/SyntaxHighlightC.cpp SyntaxHighlighter/SyntaxHighlightPython.cpp SyntaxHighlighter/SyntaxHighlightAssembly.cpp SyntaxHighlighter/SyntaxHighlightSQL.cpp Functions/DragNDrop.cpp -o wEditor $(/usr/local/bin/wx-config --cxxflags --libs)"
             ],
             "group": {
                 "kind": "build",
